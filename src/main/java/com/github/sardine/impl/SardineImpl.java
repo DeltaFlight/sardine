@@ -28,6 +28,10 @@ import java.util.Map;
 
 import javax.xml.namespace.QName;
 
+import com.github.sardine.DefaultFolderMapping;
+
+import com.github.sardine.model.DefaultFolders;
+
 import org.apache.http.Header;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpHeaders;
@@ -537,6 +541,27 @@ public class SardineImpl implements Sardine
 		else
 		{
 			return new DavQuota(responses.get(0));
+		}
+	}
+
+	@Override
+	public DefaultFolderMapping getDefaultFolders(String url) throws IOException {
+		HttpPropFind entity = new HttpPropFind(url);
+		entity.setDepth("0");
+		Propfind body = new Propfind();
+		Prop prop = new Prop();
+		prop.setDefaultFolders(new DefaultFolders());
+		body.setProp(prop);
+		entity.setEntity(new StringEntity(SardineUtil.toXml(body), UTF_8));
+		Multistatus multistatus = this.execute(entity, new MultiStatusResponseHandler());
+		List<Response> responses = multistatus.getResponse();
+		if (responses.isEmpty())
+		{
+			return null;
+		}
+		else
+		{
+			return new DefaultFolderMapping(responses.get(0));
 		}
 	}
 

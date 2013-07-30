@@ -257,6 +257,15 @@ public interface Sardine
 	DavQuota getQuota(String url) throws IOException;
 
 	/**
+	 * Read default folders
+	 *
+	 * @param url Path to the resource including protocol and hostname
+	 * @return Current default folder mapping
+	 * @throws IOException I/O error or HTTP response validation failure
+	 */
+	DefaultFolderMapping getDefaultFolders(String url) throws IOException;
+
+	/**
 	 * Write access control list for resource
 	 *
 	 * @param url  Path to the resource including protocol and hostname
