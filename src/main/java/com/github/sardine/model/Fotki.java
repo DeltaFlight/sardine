@@ -12,10 +12,9 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAnyElement;
+import javax.xml.bind.annotation.XmlMixed;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
-import org.w3c.dom.Element;
 
 
 /**
@@ -27,10 +26,8 @@ import org.w3c.dom.Element;
  * &lt;complexType>
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;all>
- *         &lt;element ref="{DAV:}fotki" minOccurs="0"/>
- *         &lt;any processContents='skip' namespace='##other' maxOccurs="unbounded" minOccurs="0"/>
- *       &lt;/all>
+ *       &lt;sequence>
+ *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
  * &lt;/complexType>
@@ -40,66 +37,41 @@ import org.w3c.dom.Element;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-
+    "content"
 })
-@XmlRootElement(name = "default-folders")
-public class DefaultFolders {
+@XmlRootElement(name = "fotki")
+public class Fotki {
 
-    protected Fotki fotki;
-    @XmlAnyElement
-    protected List<Element> any;
-
-    /**
-     * Gets the value of the fotki property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Fotki }
-     *     
-     */
-    public Fotki getFotki() {
-        return fotki;
-    }
+    @XmlMixed
+    protected List<String> content;
 
     /**
-     * Sets the value of the fotki property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Fotki }
-     *     
-     */
-    public void setFotki(Fotki value) {
-        this.fotki = value;
-    }
-
-    /**
-     * Gets the value of the any property.
+     * Gets the value of the content property.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the any property.
+     * This is why there is not a <CODE>set</CODE> method for the content property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getAny().add(newItem);
+     *    getContent().add(newItem);
      * </pre>
      * 
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link Element }
+     * {@link String }
      * 
      * 
      */
-    public List<Element> getAny() {
-        if (any == null) {
-            any = new ArrayList<Element>();
+    public List<String> getContent() {
+        if (content == null) {
+            content = new ArrayList<String>();
         }
-        return this.any;
+        return this.content;
     }
 
 }
