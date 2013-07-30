@@ -5,6 +5,7 @@ import java.util.Map;
 
 import com.github.sardine.model.DefaultFolders;
 import com.github.sardine.model.Response;
+import org.w3c.dom.Element;
 
 /**
  * Yandex.Disk default folders
@@ -16,7 +17,10 @@ public class DefaultFolderMapping {
 
 	public DefaultFolderMapping(Response response) {
 		DefaultFolders df = response.getPropstat().get(0).getProp().getDefaultFolders();
-		mapping = new HashMap<String, String>();
+		mapping = new HashMap<String, String>(df.getAny().size());
+		for (Element el : df.getAny()) {
+			mapping.put(el.getNodeName(), el.getTextContent());
+		}
 	}
 
 	public String getPath(String id) {

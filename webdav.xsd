@@ -364,15 +364,9 @@
     <element name="default-folders">
         <complexType>
             <all>
-                <element ref="dav:fotki" minOccurs="0"/>
                 <any processContents="skip" namespace="##other" minOccurs="0" maxOccurs="unbounded" />
             </all>
-        </complexType>
-    </element>
-
-    <element name="fotki">
-        <complexType mixed="true">
-            <sequence/>
+            <attribute name="xmlns" type="string"/>
         </complexType>
     </element>
 
