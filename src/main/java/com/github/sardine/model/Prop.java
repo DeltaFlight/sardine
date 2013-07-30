@@ -72,7 +72,7 @@ public class Prop {
     protected QuotaAvailableBytes quotaAvailableBytes;
     @XmlElement(name = "quota-used-bytes")
     protected QuotaUsedBytes quotaUsedBytes;
-    @XmlElement(name = "default-folders")
+    @XmlElement(name = "default-folders", namespace = "urn:yandex:disk:meta")
     protected DefaultFolders defaultFolders;
     @XmlAnyElement
     protected List<Element> any;

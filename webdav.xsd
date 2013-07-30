@@ -363,10 +363,9 @@
 
     <element name="default-folders">
         <complexType>
-            <all>
-                <any processContents="skip" namespace="##other" minOccurs="0" maxOccurs="unbounded" />
-            </all>
-            <attribute name="xmlns" type="string"/>
+            <sequence>
+                <any processContents="skip" minOccurs="0" maxOccurs="unbounded" />
+            </sequence>
         </complexType>
     </element>
 

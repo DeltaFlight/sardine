@@ -551,7 +551,6 @@ public class SardineImpl implements Sardine
 		Propfind body = new Propfind();
 		Prop prop = new Prop();
 		DefaultFolders df = new DefaultFolders();
-		df.setXmlns("urn:yandex:disk:meta");
 		prop.setDefaultFolders(df);
 		body.setProp(prop);
 		entity.setEntity(new StringEntity(SardineUtil.toXml(body), UTF_8));
